@@ -1,0 +1,93 @@
+﻿@model IEnumerable<FinalProjectMVC.Models.Missionmanganment>
+
+@{
+    ViewData["Title"] = "Missions";
+}
+
+<h1>Missions</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_MIssion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xagent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yagent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xtarget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ytarget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.distanc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time_left)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_MIssion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xagent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yagent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xtarget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ytarget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.distanc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time_left)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("ציוות למשימה", "AddToMission", new {  id=item.Id_MIssion }) |
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

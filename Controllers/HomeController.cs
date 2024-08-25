@@ -33,6 +33,21 @@ namespace FinalProjectMVC.Controllers
             return View(target);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Missions()
+        {
+
+            List<Missionmanganment> mis = await _httpClient.GetFromJsonAsync<List<Missionmanganment>>("http://localhost:5020/Missions");
+            return View(mis);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> AddToMission(int id)
+        {
+
+            await _httpClient.PutAsJsonAsync("http://localhost:5020/Missions",id);
+            return RedirectToAction(nameof(Missions));
+        }
 
 
 
