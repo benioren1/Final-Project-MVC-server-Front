@@ -1,0 +1,85 @@
+﻿@model FinalProjectMVC.Models.GeneralVieo
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<style>
+    .dl.row dt {
+        font-weight: bold;
+        width: 25%; 
+    }
+
+    .dl.row dd {
+        margin-bottom: 1rem;
+        width: 75%; 
+        overflow-wrap: break-word; 
+    }
+</style>
+
+<div>
+    <h4>GeneralVieo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AmountAgents)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AmountAgents)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TotalAgents_IS_Activity)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TotalAgents_IS_Activity)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AmountTarget)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AmountTarget)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TotalTarget_IS_activity)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TotalTarget_IS_activity)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AmountMission)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AmountMission)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.TotalMission_IS_Activity)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.TotalMission_IS_Activity)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Ratio_between_Agent_To_Target)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Ratio_between_Agent_To_Target)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Ratio_between_Agent_Able_to_target)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Ratio_between_Agent_Able_to_target)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+      setTimeout(function () {
+          location.reload();
+      }, 3000);
+  </script>
