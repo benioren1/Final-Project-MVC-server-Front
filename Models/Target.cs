@@ -15,6 +15,7 @@ namespace FinalProjectMVC.Models
        
         public string PhotoUrl { get; set; }
 
+
         public string Status { get; set; }
 
         public Target() { }
