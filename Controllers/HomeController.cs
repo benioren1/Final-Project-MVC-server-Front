@@ -69,7 +69,15 @@ namespace FinalProjectMVC.Controllers
             return View(mis);
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> Agents()
+        {
+
+            List<ViewAgent>? mis = await _httpClient.GetFromJsonAsync<List<ViewAgent>>("http://localhost:5020/Agents");
+            return View(mis);
+        }
+
+
         public async Task<IActionResult> AddToMission(int id)
         {
 

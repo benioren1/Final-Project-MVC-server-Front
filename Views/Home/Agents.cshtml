@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FinalProjectMVC.Models.ViewAgent>
+
+@{
+    ViewData["Title"] = "Agents";
+}
+
+<h1>Agents</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nickname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.X)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Y)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time_left)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount_Of_Eliminations)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.X)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Y)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time_left)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount_Of_Eliminations)
+            </td>
+            <td>
+                @Html.ActionLink("פרטי משימה", "Edit", new { /* id=item.PrimaryKey */ }) |
+               
+            </td>
+        </tr>
+}
+<script>
+      setTimeout(function () {
+          location.reload();
+      }, 3000);
+  </script>
+    </tbody>
+</table>
