@@ -1,6 +1,11 @@
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Security.Policy;
+using System.Text;
+using System.Text.Json;
 using FinalProjectMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 
 namespace FinalProjectMVC.Controllers
 {
@@ -8,18 +13,41 @@ namespace FinalProjectMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly HttpClient _httpClient;
-
+      
         public HomeController(ILogger<HomeController> logger,HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
         }
 
+
+        public async Task<IActionResult> Login()
+        { 
+        return View(new Loggin());
+        
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(Loggin log)
+        {
+            
+            var response = await _httpClient.PostAsJsonAsync("http://localhost:5020/Login", log);
+
+           
+            TokenMVC? tokenmvc = await response.Content.ReadFromJsonAsync<TokenMVC>();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenmvc.token);
+
+
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
         public async Task<IActionResult> Index()
         {
-           
+
             GeneralVieo generalvieo = await _httpClient.GetFromJsonAsync<GeneralVieo>("http://localhost:5020/GeneralVieo/GetGeneral");
-          
 
             return View(generalvieo);
         }
@@ -41,12 +69,26 @@ namespace FinalProjectMVC.Controllers
             return View(mis);
         }
 
-        [HttpPut]
+        
         public async Task<IActionResult> AddToMission(int id)
         {
 
-            await _httpClient.PutAsJsonAsync("http://localhost:5020/Missions",id);
-            return RedirectToAction(nameof(Missions));
+            var url = $"http://localhost:5020/Missions/{id}";
+            //var content = new StringContent(id.ToString(), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsJsonAsync(url, new { id});
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Missions));
+            }
+            else
+            {
+                
+                var error = await response.Content.ReadAsStringAsync();
+                
+                ViewBag.ErrorMessage = error;
+                return View("Error"); 
+            }
         }
 
 
