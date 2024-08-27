@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Security.Policy;
@@ -77,6 +78,16 @@ namespace FinalProjectMVC.Controllers
             return View(mis);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetOneMission(int id)
+        {
+            Missionmanganment? mis = await _httpClient.GetFromJsonAsync<Missionmanganment>($"http://localhost:5020/Missions/getone/{id}");
+                
+
+            
+                return View(mis);
+            
+        }
 
         public async Task<IActionResult> AddToMission(int id)
         {
